@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Formatowanie w poziomie</title>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    .paragraph-one {
+      width: 400px;
+      background-color: cadetblue;
+    }
+
+    .paragraph-two {
+      width: 400px;
+      background-color: cadetblue;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    .paragraph-three {
+      width: 400px;
+      background-color: cadetblue;
+      padding: 20px;
+      margin: 20px;
+      box-sizing: border-box;
+    }
+
+    .box {
+      width: 800px;
+      padding: 20px;
+      background-color: aqua;
+      /*box-sizing: border-box;*/
+    }
+
+    .paragraph-four {
+      margin: 20px;
+      padding: 20px;
+      background-color: green;
+    }
+
+    .paragraph-five {
+      padding: 20px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<p class="paragraph-one">wideness?</p>
+<p class="paragraph-two">wideness?</p>
+<p class="paragraph-three">wideness?</p>
+
+<div class="box">
+  <p class="paragraph-four">This is a paragraph inside a div</p>
+  <p class="paragraph-five">This is a paragraph inside a div</p>
+</div>
+</body>
+</html>
