@@ -1477,7 +1477,192 @@ Nie używaj float, tylko stosuj techniki flex.
 # Rozszerzenie: Flex i Grid w CSS
 
 ## Grid - wprowadzenie
+
 Czym w ogóle jest grid? Czy to tylko zagadnienie CSS'owe, czy stoi za tym coś więcej? Grid istniał w webdesignie na wiele lat przed wprowadzeniem tej funkcji w CSS.
 Samo pojęcie grida sprowadza się do podzielenia projektu strony/aplikacji na kolumny i wiersze. Zwykle jest to 12 kolumn, rzadziej 8, 6.
 
 ![](./images/grid.png)
+
+Po co się to robi? Ma to związek z zagadnieniem RWD (Responsive Web Design), o którym powiemy na następnych lekcjach. W dużym skrócie - łatwiej stworzyć responsywną, elastyczną stronę trzymając się proporcji zamiast stałych wartości.
+Na przykład jakiś element ma zająć 4 z 12 dostępnych kolumn na szerokość - czyli jedną trzecią. Podając to w pixelach bylibyśmy ograniczeni do konkretnych wyświetlaczy, a programista mógłby się nie domyślić tego co w planach miał designer.
+
+## Podstawowe parametry Gridowe
+
+Analogicznie do zastosowania flex'a, oczywiście w tym przypadku też musimy zacząć od ustawienia odpowiedniej wartości parametrowi display.
+
+```css
+.box-container {
+  display: grid;
+}
+```
+
+W naszym przykładzie spróbujemy zrobić prostą siatkę `9x9`.
+Będziemy chcieli wyświtlić 9 identycznych, niebieskich, kwadratowych boxów - po 3 w jednym rzędzie. Taki schemat moglibysmy wykorzystać na przykład w grze kółko-krzyżyk albo memory.
+
+Aby dało się je od siebie rozróżnić, ustawimy między nimi przestrzeń - tzw. _gap_ o rozmiarze 1%.
+
+```html
+<div class="box-container">
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+  <div class="box"></div>
+</div>
+```
+
+```css
+.box-container {
+  display: grid;
+  width: 500px;
+  height: 500px;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+  grid-gap: 1%;
+}
+
+.box {
+  background: blue;
+}
+```
+
+Przeanalizujmy podany kod.
+
+```css
+.box-container {
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+  grid-gap: 1%;
+}
+```
+
+Te parametry sprawiają, że:
+
+ustalamy szerokości kolumn - 3 kolumny po 33%, bo chcemy żeby każdy zajął 1/3 szerokości całego kontenera, który w naszym przykładzie ma 500x500 pixeli;
+ustalamy wysokość wierszy - 3 wiersze po 33%, bo chcemy żeby każdy zajął 1/3 wysokości całego kontenera
+ustalamy przerwę między tymi elementami - aby poszczególne "kafelki" były od siebie rozróżnialne, a nie zlały się w całość
+Inaczej niż zazwyczaj, tutaj ta przestrzeń pomiędzy elementami dzieje się automatycznie. Chociaż mamy wykorzystane 99% na same kafelki (3 x 33%) to zmieściliśmy 2%.
+
+Może chcielibyśmy stworzyć sekcje z bocznymi menu dla każdej z nich?
+
+```css
+.box-container {
+  grid-template-columns: 20% auto 20%;
+  grid-template-rows: auto;
+  grid-gap: 1%;
+}
+```
+
+W tym przypadku mówimy CSS'owi, że pierwsza i ostatnia kolumna mają mieć po 20%, a środkowa ma wykorzystać automatycznie pozostałe miejsce. Tym razem uznaliśmy też, że nasza sekcja może mieć sporo treści i ustalanie jej wysokości na sztywno to zły pomysł, dlatego w grid-template-rows podaliśmy wartość auto. To znaczy, że wiersze dostosują swoją wysokość automatycznie, uwzględniając ich zawartość.
+
+Efekt?
+
+![](./images/grid-2.png)
+
+Przejdźmy jednak do największego "bajeru". Czyli definiowania tego grida w sposób bardzo intuicyjny i obrazowy - ale też przydatny do bardziej życiowych sytuacji.
+Powiedzmy, że nasza strona ma mieć następującą "siatkę" - czyli grid layout. Zdecydowaliśmy, że kolumn będzie 6:
+
+Nawigacja ma mieć 100% szerokości
+Poniżej ma się znaleźć boczne menu na 2/6 szerokości
+Reszta tego wiersza to artykuły
+Poniżej chcemy wyświtlić 2 reklamy naszych produktów, oba po 50% szerokości
+Na samym dole mamy stopkę na 100% szerokości strony
+
+Oto jak to zapiszemy:
+
+```html
+<div class="container">
+  <div class="nav">nav</div>
+  <div class="side-nav">side-nav</div>
+  <div class="content">content</div>
+  <div class="ad1">ad1</div>
+  <div class="ad2">ad2</div>
+  <div class="footer">footer</div>
+</div>
+```
+
+```css
+.nav {
+  grid-area: nav;
+}
+.side-nav {
+  grid-area: side-nav;
+}
+.content {
+  grid-area: content;
+}
+.ad1 {
+  grid-area: ad1;
+}
+.ad2 {
+  grid-area: ad2;
+}
+.footer {
+  grid-area: footer;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'nav nav nav nav nav nav'
+    'side-nav side-nav content content content content'
+    'ad1 ad1 ad1 ad2 ad2 ad2'
+    'footer footer footer footer footer footer';
+  text-align: center;
+  grid-gap: 10px;
+}
+
+.container div {
+  background: blue;
+  padding: 10px;
+}
+```
+
+Efekt?
+
+![](./images/grid-3.png)
+
+Ok, ale co tu się dzieje?
+
+Przede wszystkim, na początku zrobiliśmy sobie `container` w naszym pliku HTML.
+Wrzuciliśmy do niego divy odpowiadające sekcjom, które chcielibyśmy wyświetlić.
+W CSS zdefiniowaliśmy klasy tych elementów, jedyne co w nich dodajemy do parametr `grid-area`, którego zadaniem jest przypisanie nazwy tej części naszego grida.
+Opisaliśmy klasę `containera`. Ustawiamy oczywiście `display` na `grid` i pozwalamy kolumnom oraz wierszom dostosowywać swój rozmiar odpowiednio do zawartości - `auto`.
+Tutaj zaczynają się czary :) W `grid-template-areas` możemy użyć zdefiniowanych przez nasz wcześniej grid-area. Wpisujemy je w jednym wierszu tyle razy ile chcemy żeby proporcjonalnie zajęły miejsca. Musimy pamiętać, że każdy wiersz musi mieć tyle samo kolumn! Czyli jeżeli nav ma zająć całą szerokość, a mamy 6 kolumn, to trzeba go wpisać 6 razy.
+Sprawiliśmy dla czytelności, że tekst się wyśrodkowuje.
+Dodaliśmy wszystkim div'om wewnątrz containera niebieskie tło oraz `padding` - w celach estetycznych i żeby się łatwiej wyróżniały dla przykładu.
+
+## Podsumowanie
+
+_Flex i Grid_ to potężne narzędzia, które dają nam olbrzymie możliwości i przyspieszają zdecydowanie pracę nad stronami i aplikacjami.
+
+Pamiętajcie jednak o najważniejszej zasadzie - nim przejdziecie dalej, spróbujcie napisać swoje małe strony przy ich użyciu. Nie kopiując i wklejając wartości, tylko robiąc to samemu :)
+
+Podobnie jak na końcu poprzedniego wpisu, gorąco zachęcamy do "wgryzienia" się bardziej w temat przy pomocy tutoriala grupy CSS-Tricks, którzy przedstawiają wszystkie dostępne parametry gridu oraz wizualizują ich zachowanie.
+
+[](https://css-tricks.com/snippets/css/complete-guide-grid/)
+
+## Zadanie domowe - zrób, nim przejdziesz dalej!
+
+Warto byłoby przećwiczyć tego Grida i zrozumieć na własnej skórze jak działa, dlatego Twoimi zadaniami będzie:
+
+Zrób siatkę, która będzie składać się z 4 wierszy po 6 kolumn (4x6)
+Niech każdy element ma szare tło oraz jest oddzielony od pozostałych o 15px.
+
+Stwórz grid, w którym:
+obszar (area) header zajmie całą szerokość i 1/3 wysokości,
+obszar sidebar zajmie 50% szerokości i pozostałe 2/3 wysokości, po lewej stronie,
+po prawej stronie obszar main oraz footer zajmą pozostałe 50% szerokości i oba po 1/3 wysokości, jeden pod drugim.
+Tekstowa interpretacja zadania drugiego:
+
+```text
+"header  header"
+"sidebar main  "
+"sidebar footer";
+```
