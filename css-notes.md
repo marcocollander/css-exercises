@@ -1,4 +1,4 @@
-# *PODSTAWY CSS (Notatki z podręczników i kursów)*
+# PODSTAWY CSS (Notatki z podręczników i kursów)
 
 # Wprowadzenie do CSS
 
