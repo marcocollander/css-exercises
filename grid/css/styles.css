@@ -1,0 +1,24 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.box-container {
+  display: grid;
+  width: 500px;
+  height: 500px;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+  grid-gap: 1%;
+}
+
+.box {
+  background: blue;
+}
+
+
+
+
