@@ -1,0 +1,15 @@
+h1 {
+  font: 36px Verdana;
+}
+
+p {
+  font: 25px Arial;
+}
+
+.box {
+  width: 600px;
+  height: 400px;
+  background-image:
+    url('https://cdn.pixabay.com/photo/2021/08/12/10/38/mountains-6540497_960_720.jpg'),
+    linear-gradient(to right top, #888d94, #8d9ba0, #96a9a7, #a5b5ab, #bbc0ae);
+}

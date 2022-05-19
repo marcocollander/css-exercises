@@ -1,4 +1,4 @@
-# _PODSTAWY CSS (Notatki z podręczników i kursów)_
+# PODSTAWY CSS (Notatki z podręczników i kursów)
 
 # Wprowadzenie do CSS
 
@@ -55,8 +55,8 @@ h2 {
 
 ### Deklaracje oraz słowa kluczowe
 
-Deklaracja składa się nazwy właściwości dwukropka, _wartości_ i jest zakończona średnikiem. Po dwukropku oraz średniku
-może znajdować się zero albo dowolna liczba spacji. _Wartość_ jest albo pojedyńczym słowem kluczowym, albo oddzieloną
+Deklaracja składa się nazwy właściwości dwukropka, *wartości* i jest zakończona średnikiem. Po dwukropku oraz średniku
+może znajdować się zero albo dowolna liczba spacji. *Wartość* jest albo pojedyńczym słowem kluczowym, albo oddzieloną
 spacjami listą kilku słów kluczowych dozwolonych dla tej właściwości. Jeśli w deklaracji zostanie użyta niepoprawna
 właściwość bądź jej wartość, cała deklaracja jest ignorowana.
 
@@ -78,15 +78,15 @@ słowa kluczowe ustawiające wielkość tekstu oraz wysokość wiersza.
 Od jakiegoś czasu ukośnik zaczął się pojawiać w wartościach innych właściwości. Są to między innymi
 (ta lista może ulec zmianie):
 
-- background
-- border-image
-- border-radius
-- grid
-- grid-area
-- grid-column
-- grid-row
-- grid-template
-- mask-border
+* background
+* border-image
+* border-radius
+* grid
+* grid-area
+* grid-column
+* grid-row
+* grid-template
+* mask-border
 
 Przy deklarowaniu wielu wartości — na przykład parametrów kilku obrazów w tle, przejść oraz cieni — deklaracje są
 rozdzielone właśnie przecinkami. Ponadto przecinki są stosowane do rozdzielania parametrów funkcji, takich jak gradienty
@@ -95,7 +95,7 @@ liniowe i przekształcenia. Oto przykład:
 ```css
 .box {
   box-shadow: inset -1px -1px white, 3px 3px 3px rgba(0, 0, 0, 0.2);
-  background-image: url(myimage.png), linear-gradient(180deg, #fff 0%, #000 100%);
+  background-image: url(myimage.png), linear-gradient(180deg, #FFF 0%, #000 100%);
   transform: translate(100px, 200px);
 }
 
@@ -112,16 +112,15 @@ Możemy grupować dowolną liczbę selektorów, rozdzielając je przecinkami. Po
 selektory przypisano styl:
 
 ```css
-h2,
-p {
+h2, p {
   color: grey;
 }
 ```
 
 #### Selektor uniwersalny
 
-_Selector uniwersalny_, którego symbolem jest zak gwiazdki (*) pasuje do każdego elementu, na zasadzie podobnej do
-działania symboli wieloznacznych (ang. *wildcard\*).
+*Selector uniwersalny*, którego symbolem jest zak gwiazdki (*) pasuje do każdego elementu, na zasadzie podobnej do
+działania symboli wieloznacznych (ang. *wildcard*).
 
 ```css
 * {
@@ -137,13 +136,13 @@ specyficzność 0-0-0.
 
 W jednej regule grupujemy deklaracje:
 
-```css
-h1 {
+ ```css
+  h1 {
   font: 18px Helvetica;
   color: purple;
   background: aqua;
 }
-```
+ ```
 
 Najlepiej jest zawsze stawiać średnik za ostatnią deklaracją, bez względu na miejsce użycia reguły.
 
@@ -152,12 +151,7 @@ Najlepiej jest zawsze stawiać średnik za ostatnią deklaracją, bez względu n
 Jeśli chcemy, aby każdy nagłówek otrzymał ten sam zestaw stylów to, piszemy:
 
 ```css
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   color: gray;
   background: white;
   padding: 0.5em;
@@ -185,8 +179,8 @@ document.createElement('main');
 
 Oprócz selektorów elementów dokumentu istnieją jeszcze dwa inne ich rodzaje:
 
-1. Selektory klas (ang. _class selectors_)
-2. Selektory identyfikatorów (ang. _ID selectors_)
+1. Selektory klas (ang. *class selectors*)
+2. Selektory identyfikatorów (ang. *ID selectors*)
 
 Pozwalają one na przypisanie stylów w sposób <u>niezależny od elementów dokumentu</u> i mogą zostać użyte samodzielnie
 lub w połączeniu z selektorami elementów. Nazwą jednej klasy możemy oznaczyć różne elementy i nadać im jednolity styl.
@@ -201,7 +195,7 @@ Selektor klas składa się z kropki i wartości atrybutu `class` elementu, do kt
 }
 ```
 
-Selektor uniwersalny (jawnie zapisywany w postaci gwiazdki — \*) jest stosowany domyślnie, kiedy jakiś identyfikator,
+Selektor uniwersalny (jawnie zapisywany w postaci gwiazdki — *) jest stosowany domyślnie, kiedy jakiś identyfikator,
 klasę, selektor atrybutu, selektor pseudoklasy lub pseudoelementu zapisze się bez powiązania z selektorem elementu.
 
 Gdy chcemy, aby tekst był czerwony tylko wtedy, gdy cały akapit jest ostrzeżeniem to, napiszemy:
@@ -332,12 +326,11 @@ a[class][title] {
 Można zawęzić proces wyboru do tych elementów, których atrybuty mają pewną konkretną wartość.
 
 ```css
-a[href="http://www.w3.org/"][title="W3C Home"]
-{
+a[href="http://www.w3.org/"][title="W3C Home"] {
   font-size: 200%;
 }
 
-p[class='urgent warning'] {
+p[class="urgent warning"] {
   font-weight: bold;
 }
 ```
@@ -353,14 +346,14 @@ pomiędzy `h1#page-title` oraz `h1[id="page-title"]` polega na innej specyficzno
 
 Tabela. Selektory atrybutów dopasowujące fragmenty łańcuchów znaków
 
-| Typ          | Opis                                                                                                   |
-| ------------ | ------------------------------------------------------------------------------------------------------ |
-| [foo~="bar"] | Każdy element z atrybutem foo, którego wartość zawiera słowo bar na liście oddzielonych spacjami słów. |
-| [foo*="bar"] | Każdy element z atrybutem foo, którego wartość zawiera łańcuch znaków bar.                             |
-| [foo^="bar"] | Każdy element z atrybutem foo, którego wartość zaczyna się od bar.                                     |
-| [foo$="bar"] | Każdy element z atrybutem foo, którego wartość kończy się na bar.                                      |
+|Typ | Opis|
+|-----| -----|
+|[foo~="bar"]| Każdy element z atrybutem foo, którego wartość zawiera słowo bar na liście oddzielonych spacjami słów.
+| [foo*="bar"]| Każdy element z atrybutem foo, którego wartość zawiera łańcuch znaków bar.
+| [foo^="bar"] | Każdy element z atrybutem foo, którego wartość zaczyna się od bar.
+| [foo$="bar"] | Każdy element z atrybutem foo, którego wartość kończy się na bar.
 
-`[foo|="bar"]` Każdy element z atrybutem foo, którego wartość zaczyna się od łańcucha bar, po którym następuje znak
+`[foo|="bar"]`  Każdy element z atrybutem foo, którego wartość zaczyna się od łańcucha bar, po którym następuje znak
 kreski (U+002D) lub którego wartość jest dokładnie równa bar
 
 #### Dopasowywanie początku lub całego atrybutu
@@ -368,7 +361,7 @@ kreski (U+002D) lub którego wartość jest dokładnie równa bar
 Rozważmy następującą regułę:
 
 ```css
-*[lang|='en'] {
+*[lang|="en"] {
   color: white;
 }
 ```
@@ -387,7 +380,7 @@ trzy elementy następującego przykładu zostaną wybrane, natomiast dwa ostatni
 Ogólnie rzecz biorąc, forma `[att|="val"]` może być wykorzystywana z dowolnym atrybutem oraz dowolnymi wartościami.
 
 ```css
-img[src|='rysunek'] {
+img[src|="rysunek"] {
   border: 1px solid gray;
 }
 ```
@@ -420,48 +413,42 @@ zostać przypisany danemu elementowi.
 Rozważmy poniższy, bardzo prosty dokument HTML:
 
 ```html
+
 <html lang="">
-  <head>
-    <base href="https://www.meerkat.web/" />
-    <title>Centrum mangust</title>
-  </head>
 
-  <body>
-    <h1>Centrum <em>Mangust</em></h1>
-    <p>
-      Witamy w Centrum <em>Mangust</em>,
-      <strong>
-        najlepszej stronie o mangustach
-        <a href="inet.html">w <em>całym</em> Internecie</a></strong
-      >!
-    </p>
+<head>
+  <base href="https://www.meerkat.web/">
+  <title>Centrum mangust</title>
+</head>
+
+<body>
+<h1>Centrum <em>Mangust</em></h1>
+<p>
+  Witamy w Centrum <em>Mangust</em>, <strong> najlepszej stronie o mangustach
+  <a href="inet.html">w <em>całym</em> Internecie</a></strong>!
+</p>
+<ul>
+  <li>Oferujemy:
     <ul>
-      <li>
-        Oferujemy:
-        <ul>
-          <li>
-            <strong>Szczegółowe informacje</strong> o tym, jak zaadoptować
-            mangustę
-          </li>
-          <li>Wskazówki, jak żyć z mangustą</li>
-          <li>
-            <em>Zabawy</em> z mangustami, w tym:
+      <li><strong>Szczegółowe informacje</strong> o tym, jak zaadoptować mangustę</li>
+      <li>Wskazówki, jak żyć z mangustą</li>
+      <li><em>Zabawy</em> z mangustami, w tym:
 
-            <ol>
-              <li>Bawienie się w aportowanie</li>
-              <li>Kopanie w poszukiwaniu jedzenia</li>
-              <li>Bawienie się w chowanego</li>
-            </ol>
-          </li>
-        </ul>
+        <ol>
+          <li>Bawienie się w aportowanie</li>
+          <li>Kopanie w poszukiwaniu jedzenia</li>
+          <li>Bawienie się w chowanego</li>
+        </ol>
+
       </li>
-      <li>... i wiele więcej!</li>
     </ul>
-    <p>
-      Masz pytania?
-      <a href="mailto:suricate@meerkat.web">Skontaktuj się z nami!</a>
-    </p>
-  </body>
+  </li>
+  <li>... i wiele więcej!</li>
+</ul>
+<p>
+  Masz pytania? <a href="mailto:suricate@meerkat.web">Skontaktuj się z nami!</a>
+</p>
+</body>
 </html>
 ```
 
@@ -491,7 +478,7 @@ Na rysunku widać również element `a` będący dzieckiem elementu `strong`, al
 również elementów `body` oraz `html`. Element `body` jest przodkiem wszystkich elementów, które domyślnie wyświetli
 przeglądarka, natomiast element `html` jest przodkiem wszystkich elementów dokumentu. Z tego powodu w dokumentach HTML
 lub XHTML element
-`html` jest czasami nazywany elementem głównym (ang. _root element_).
+`html` jest czasami nazywany elementem głównym (ang. *root element*).
 
 ### Selektory kontekstowe
 
@@ -504,7 +491,7 @@ h1 em {
 ```
 
 W selektorze kontekstowym lewa strona reguły składa się z dwóch lub większej liczby selektorów elementów rozdzielonych
-spacjami. Spacja jet tu przykładem kombinatora (ang. _combinator_), który może być interpretowany jako: „znaleziony
+spacjami. Spacja jet tu przykładem kombinatora (ang. *combinator*), który może być interpretowany jako: „znaleziony
 wewnątrz” lub „będący potomkiem”. W ten sposób `h1 em`można przetłumaczyć jako „każdy element `em` będący potomkiem
 elementu `h1`”.
 
@@ -546,15 +533,13 @@ wyświetlony na czerwono:
 
 ```html
 <h1>To jest <strong>bardzo</strong> ważne.</h1>
-<h1>
-  To jest <em>naprawdę <strong>bardzo</strong></em> ważne.
-</h1>
+<h1>To jest <em>naprawdę <strong>bardzo</strong></em> ważne.</h1>
 ```
 
 ### Wybieranie przylegających elementów rodzeństwa
 
 Element znajdujący się bezpośrednio po innym elemencie wewnątrz tego samego rodzica wybieramy, korzystając z kombinatora
-— znaku plusa (+) (ang. _adjacent sibling combinator_).
+— znaku plusa (+) (ang. *adjacent sibling combinator*).
 
 ```css
 h1 + p {
@@ -577,6 +562,7 @@ Tekst znajdujący się pomiędzy dwoma elementami nie przeszkadza w działaniu s
 elementów rodzeństwa.
 
 ```html
+
 <div>
   <ol>
     <li>Element listy 1</li>
@@ -622,12 +608,11 @@ h2 ~ ol {
 ```
 
 ```html
+
 <div>
   <h2>Subheadings</h2>
-  <p>
-    It is the case that not every heading can be a main heading. Some headings
-    must be subheadings. Examples include:
-  </p>
+  <p>It is the case that not every heading can be a main heading. Some headings
+    must be subheadings. Examples include:</p>
   <ol>
     <li>Headings that are less important</li>
     <li>Headings that are subsidiary to more important headlines</li>
@@ -691,7 +676,6 @@ pojawić w dowolnym miejscu w obrębie selektora oraz zawsze odwołują się one
 żadnego innego.
 
 Eric A. Meyer:
-
 > Otóż kiedy, w 2003 roku urodziło się moje pierwsze dziecko, ogłosiłem tę wieść w internecie (jak każdy…). Kilka
 > osób złożyło mi gratulacje i odpowiedziało żarcikami związanymi z CSS, których najlepszym przykładem był selektor
 > `#ericmeyer:first-child`. Problem polega na tym, że taki selektor wybrałby mnie, a nie moją córkę,
@@ -750,6 +734,7 @@ Pseudoklasa `:first-child` służy do wybierania elementów, które są pierwszy
 następujący kod:
 
 ```html
+
 <style>
   p:first-child {
     font-weight: bold;
@@ -767,13 +752,15 @@ następujący kod:
     <li>Turn key <strong>clockwise</strong></li>
     <li>Push accelerator</li>
   </ul>
-  <p>Do <em>not</em> push the brake at the same time as the accelerator.</p>
+  <p>
+    Do <em>not</em> push the brake at the same time as the accelerator.
+  </p>
 </div>
 ```
 
 Pierwsza reguła powoduje pogrubienie dowolnego elementu `p`, który jest pierwszym dzieckiem dowolnego elementu. Druga
 reguła powoduje zmianę na duże liter dowolnego elementu `li`, który jest pierwszym dzieckiem innego elementu (co w HTML
-oznacza element` `ol`albo`ul`).
+oznacza element` `ol` albo `ul`).
 
 ![Zmiana stylu pierwszego dziecka](images/first-child.png)
 
@@ -784,6 +771,7 @@ do elementu powiązanego z daną pseudoklasą.
 Jeśli chcielibyśmy dodać prawdziwe klasy do podanego kodu, wyglądałby on na przykład tak:
 
 ```html
+
 <div>
   <p class="first-child">These are the necessary steps:</p>
   <ul>
@@ -792,8 +780,7 @@ Jeśli chcielibyśmy dodać prawdziwe klasy do podanego kodu, wyglądałby on na
     <li>Push accelerator</li>
   </ul>
   <p>
-    Do <em class="first-child">not</em> push the brake at the same time as the
-    accelerator.
+    Do <em class="first-child">not</em> push the brake at the same time as the accelerator.
   </p>
 </div>
 ```
@@ -860,8 +847,7 @@ Jeśli jednak wkradnie nam się inny element między te wybrane w selektorze, np
 
 ```html
 <h1>text</h1>
-<span>text</span>
-<!-- nasz intruz -->
+<span>text</span> <!-- nasz intruz -->
 <p>text</p>
 ```
 
@@ -927,7 +913,7 @@ klasy.
 
 # Kaskada, specyficzność i dziedziczenie
 
-Kaskadowe arkusze stylów CSS (ang. _Cascading Style Sheets_) nie są językiem programowania, ale wymagają myślenia
+Kaskadowe arkusze stylów CSS (ang. *Cascading Style Sheets*) nie są językiem programowania, ale wymagają myślenia
 abstrakcyjnego i trochę kreatywności. Charakteryzują się prostą deklaratywną składnią, która jednakże może przy
 większych projektach osiągnąć utrudniającą pracę złożoność.
 
@@ -950,12 +936,10 @@ wywołujących konflikt.
 Zestawy reguł z deklaracjami wywołującymi konflikt mogą występować jeden po drugim albo mogą być rozrzucone w obrębie
 arkusza stylów. W każdym wariancie z punktu widzenia użytego kodu HTML wszystkie dotyczą tego samego elementu.
 
----
-
+***
 **Kaskada** to zestaw reguł, którymi kieruje się przeglądarka przy rozwiązywaniu konfliktów deklaracji podczas nadawania
 stylu danemu elementowi. Ponadto stanowi fundamentalną część decydującą o działaniu arkuszy stylów CSS.
-
----
+***
 
 Choć najbardziej doświadczeni projektanci mają ogólną orientację w kwestii kaskady, jej elementy są czasami źle
 rozumiane.
@@ -963,10 +947,10 @@ rozumiane.
 W momencie wystąpienia konfliktu między deklaracjami w celu określenia różnicy między nimi kaskada bierze pod uwagę
 następujące trzy kwestie:
 
-1. _Pochodzenie arkusza stylów._ Miejsce, z którego pochodzą style. Użyte style są stosowane w połączeniu ze stylami
+1. *Pochodzenie arkusza stylów.* Miejsce, z którego pochodzą style. Użyte style są stosowane w połączeniu ze stylami
    domyślnymi przeglądarki.
-2. _Specyficzność selektorów._ Określanie, jakie selektory mają pierwszeństwo względem innych.
-3. _Kolejność źródłowa._ Kolejność, w jakiej style są deklarowane w arkuszu stylów.
+2. *Specyficzność selektorów.* Określanie, jakie selektory mają pierwszeństwo względem innych.
+3. *Kolejność źródłowa.* Kolejność, w jakiej style są deklarowane w arkuszu stylów.
 
 ### Źródło arkusza stylów
 
@@ -977,7 +961,7 @@ Istnieją trzy źródła arkuszy stylów, które stosuje przeglądarka:
 
 1. Style autora - to style, które nadaje autor strony.
 2. Style użytkownika — to style, które definiuje użytkownik przeglądarki.
-3. Style agenta użytkownika (ang. _user agent stylesheet_)
+3. Style agenta użytkownika (ang. *user agent stylesheet*)
 
 #### Style agenta użytkownika
 
@@ -1036,9 +1020,9 @@ Podobnie specyficzność selektora klasy jest większa niż selektora znacznika 
 
 Dokładne reguły specyficzności są następujące:
 
-- Jeśli selektor ma więcej identyfikatorów, zwycięża, czyli jest bardziej specyficzny.
-- W razie remisu wygrywa selektor z największą liczbą klas.
-- W razie remisu wygrywa selektor z największą liczbą nazw znaczników.
+* Jeśli selektor ma więcej identyfikatorów, zwycięża, czyli jest bardziej specyficzny.
+* W razie remisu wygrywa selektor z największą liczbą klas.
+* W razie remisu wygrywa selektor z największą liczbą nazw znaczników.
 
 Selektory utworzone za pomocą identyfikatorów posiadają specyficzność, którą trudno przesłonić, chyba że za pomocą
 innych identyfikatorów.
@@ -1126,9 +1110,9 @@ Ten rozdział opisuje teoretyczne aspekty wizualizacji elementów w CSS.
 ## Podstawowe pojemniki
 
 CSS zakłada, że każdy element generuje jeden lub więcej prostokątnych obszarów zwanych pojemnikami albo pudełkami
-elementu (ang. _element box_).
+elementu (ang. *element box*).
 
-Wewnętrzna część każdego pojemnika elementu nazywana jest obszarem treści elementu (ang. _content area_). Obszar
+Wewnętrzna część każdego pojemnika elementu nazywana jest obszarem treści elementu (ang. *content area*). Obszar
 zawartości elementu opcjonalnie może być otoczony dopełnieniem, obramowaniem, konturami oraz marginesami. Ich szerokość
 może zostać ustawiona na zero, co w praktyce powoduje ich usunięcie z pojemnika elementu.
 
@@ -1143,46 +1127,48 @@ Jeśli nie zdefiniuje się koloru obramowania, przyjmowany jest kolor zawartośc
 
 ## Krótka powtórka
 
-> _Układ normalny_
+> *Układ normalny*
 >
-> Pisany od lewej do prawej i od góry do dołu tekst w językach zachodnich oraz znany układ tekstu tradycyjnych dokumentów
-> HTML. Większość elementów znajduje się w układzie normalnym (ang. _normal flow_) i jedynym sposobem znalezienia się
+>Pisany od lewej do prawej i od góry do dołu tekst w językach zachodnich oraz znany układ tekstu tradycyjnych dokumentów
+> HTML. Większość elementów znajduje się w układzie normalnym (ang. *normal flow*) i jedynym sposobem znalezienia się
 > poza nim jest ustawienie elementu jako pływającego, pozycjonowanego bądź umieszczenie go w układzie typu flexbox lub
 > w układzie siatkowym.
 
-> _Element niezastępowany_
+
+> *Element niezastępowany*
 >
 > Element, którego zawartość znajduje się w dokumencie. Przykładowo, akapit `p` jest elementem niezastępowanym,
 > ponieważ jego treść (tekst) znajduje się wewnątrz samego elementu.
 
-> _Element zastępowany_
+
+> *Element zastępowany*
 >
 > Element, który spełnia funkcję pojemnika na coś innego. Np. element `img` tylko wskazuje na plik z obrazem.
 > Elementy zastępowane to również większość elementów formularza (na przykład `<input type="radio">`).
 
-> _Element główny_
+> *Element główny*
 >
 > Element znajdujący się na szczycie drzewa dokumentu. W dokumentach HTML jest nim element `html`.
 
-> _Pojemnik elementu blokowego_
+> *Pojemnik elementu blokowego*
 >
-> Jest tworzony przez element taki jak akapit, nagłówek czy div. W układzie normalnym elementy te generują nowe wiersze
+>Jest tworzony przez element taki jak akapit, nagłówek czy div. W układzie normalnym elementy te generują nowe wiersze
 > zarówno przed swoimi pojemnikami, jak i po nich, dlatego układane są na sobie w pionie.
 > Dowolny element może stać się blokowym => `display: block'.
 
-> _Pojemnik elementu liniowego_
+> *Pojemnik elementu liniowego*
 >
 > Jest tworzony przez element taki jak strong czy span. Elementy te nie powodują „złamania wiersza” przed nimi bądź po
 > nich.
 > Dowolny element może stać się blokowym => `display: inline'.
 
-> _Pojemnik liniowo-blokowy_
+> *Pojemnik liniowo-blokowy*
 >
 > Jest to pojemnik, który wewnętrznie zachowuje się jak pojemnik blokowy, ale na zewnątrz jak pojemnik liniowy.
 > Jego działanie jest podobne (ale nieidentyczne) jak elementu zastępowanego. Wyobraź sobie element `div`, który został
 > umieszczony w wierszu tekstu tak, jakby był to obraz.
 
-### Blok zawierający element (ang. _containing block_).
+### Blok zawierający element (ang. *containing block*).
 
 Umiejscowienie każdego pojemnika elementu uzależnione jest od bloku zawierającego; w istocie blok zawierający stanowi
 „kontekst układu” dla pojemnika.
@@ -1275,7 +1261,6 @@ Wartość wyliczona: Jak określono.
 Dziedziczona: Nie
 
 Animowana: Nie
-
 <hr>
 
 Ta właściwość umożliwia zmianę sposobu działania wartości parametrów `width` i `height`.
@@ -1328,7 +1313,7 @@ rodzaju stanów.
 Każda zmiana wartości właściwości CSS zachodzi natychmiastowo. Na przykład zmiana koloru tła po wskazaniu danego
 elementu kursorem myszy jest bezzwłoczna, bez płynnego przejścia między barwami.
 
-Przejścia (ang. _transitions_) CSS umożliwiają sterowanie sposobem zmiany jednej wartości właściwości na inną w ciągu
+Przejścia (ang. *transitions*) CSS umożliwiają sterowanie sposobem zmiany jednej wartości właściwości na inną w ciągu
 określonego czasu. Dzięki temu możemy uzyskać płynną zmianę wartości.
 
 ```css
@@ -1358,311 +1343,22 @@ Dzięki przejściom rozwijane menu mogą się wyświetlać powoli. Jest to jedno
 
 Przejścia tworzy się za pomocą czterech właściwości przejść:
 
-- `transition-property`,
-- `transition-duration`,
-- `transition-timing-function`
-- `transition-delay`;
+* `transition-property`,
+* `transition-duration`,
+* `transition-timing-function`
+* `transition-delay`;
 
 Istnieje też skrótowa właściwość `transition` obejmująca te cztery właściwości składowe.
 
-# Notatki z kursu front-end html-css fc
 
-# Czym jest flex, grid?
 
-Przez wiele lat programiści stron internetowych mieli bardzo dużą trudność w pozycjonowaniu elementów. Wiele takich sytuacji wymagało stosowania tzw. "hacków" czyli obchodzenia typowego zastosowania pewnych rozwiązań w celu uzyskania zamierzonego efektu. To były tricki, a nie w pełni stabilne, natywne rozwiązania.
-Dużo zmieniło się od czasu wejścia CSS w wersji trzeciej. To on przyniósł długo wyczekiwane rozwiązania mające ułatwić naszą pracę.
-_Flex_ oraz _grid_ to sposoby na układanie elementów np zgodnie z designem, który został nam dostarczony.
 
-# Co lepsze? Grid czy Flex?
 
-Nie można odpowiedzieć na to pytanie, bo oba rozwiązania mają swoje wady i zalety, są stosowane w zaleźności od potrzeb.
-Zaletą _Grida_ jest stworzenie sztywnych ram naszego layoutu (czyli wyglądu strony, planu) i automatyczne dopasowywanie ich, w zależności od ilości treści.
-_Flex_ jest bardzo elastyczną metodą i pozwala nam na nieco więcej "kombinowania", ale używany nierozważnie może doprowadzić do błędnego wyświetlania zawartości strony.
 
-# Flex - wprowadzenie
 
-Pamiętacie parametr CSS display? To w nim będziemy decydować czy element ma być elementem flexowy bądź gridowym.
 
-```css
-.box-container {
-  display: flex;
-}
-```
 
-Co nam to na początku daje? To, że divy wewnątrz będą układały się obok siebie. Są dziećmi naszego `box-container` więc z założenia chcemy je jakoś uporządkować.
-Powiedzmy, że w `box-container` chcemy żeby znalazły się 3 boxy.
 
-- Sam container ma mieć 200px wysokości i 100% szerokości. Ma żółte tło.
-- Boxy to divy o rozmiarze 100x100 pixeli, mają niebieskie tło.
-- Chcemy żeby te 3 boxy ułożyły się w równych odległościach od siebie, wykorzystując całą dostępną szerokość box-containera
-- Chcemy żeby w pionie zostały wyśrodkowane względem box-containera
 
-Warto wyróżnić kilka najczęściej używanych parametrów flexowych:
 
-- justify-content - decyduje o tym jak nasze elementy będą się układać w poziomie
-- align-items - decyduje o tym jak nasze elementy będą się układać w pionie
-- flex-wrap - decyduje o tym czy nasze elementy mają się załamywać do nowej linii kiedy będzie ich "za dużo"
 
-Nasz plik wyglądałyby wtedy w następujący sposób:
-
-```css
-<div
-  class='box-container'
-  > <div
-  class='box'
-  > </div
-  > <div
-  class='box'
-  > </div
-  > <div
-  class='box'
-  > </div
-  > </div
-  > .box-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 200px;
-  background: yellow;
-}
-
-.box {
-  width: 100px;
-  height: 100px;
-  background: blue;
-}
-```
-
-Jeżeli chcielibyśmy aby elementy miały dookoła siebie równe przerwy (żeby skrajne z lewa i prawa nie były przyklejone zaraz do krawędzi kontenera)
-Wystarczyłoby zmienić jeden parametr:
-
-```css
-justify-content: space-evenly;
-```
-
-Flex daje nam też możliwość ustalenia kolejności układania elementów. Na przykład zamiast domyślnie układać się w wierszu (horyzontalnie), możemy kazać elementom układać się jeden pod drugim:
-
-```css
-.box-container {
-  flex-direction: column;
-}
-```
-
-Jeżeli chcielibyśmy zastosować jakieś indywidualne zasady pozycjonowania dla pojedynczego elementu, to skorzystamy z kolei z
-
-`align-self`.
-
-Nasze boxy były wyśrodkowane ale gdybyśmy chcieli żeby jeden był przyklejony do dołu kontenera, to możemy przypisać mu klasę modyfikatora, w której zastosujemy wspomniany parametr:
-
-```css
-.box__bottom {
-  align-self: flex-end;
-}
-```
-
-Jest bardzo dużo zastosowań flexa i tak naprawdę ogranicza nas tylko nasza wyobraźnia. Polecamy zapoznać się z kompletnym tutorialem popularnej strony [CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/), w którym możecie zobaczyć wszystkie dostępne parametry flexowe wraz z wizualizacją ich działania!
-CSS-Tricks
-
-## Zadanie domowe - zrób, nim przejdziesz dalej!
-
-Wyobraźmy sobie najpopularniejszy typ nawigacji na stronie. Co widzimy? Pewnie w większości logo po lewej stronie i linki do odpowiednich sekcji po prawej stronie. Może jest to już nieco zbyt oczywiste, ale równiez bardzo intuicyjne dla wielu użytkowników. Twoim zadaniem będzie więc zrobienie:
-
-Nawigacji, o szarym tle, która zajmuje całą szerokość przeglądarki, ma padding z każdej strony na 2%, a w środku znajdą się 2 elementy: logo jako <img> (wybierz dowolne) o szerokości 50px; oraz pozioma lista z linkami (max 4).
-
-Logo powinno być przyklejone do lewej strony, a linki powinny wyświetlać się po prawej. Wysokość nawigacji dostosuje się automatycznie do treści.
-
-Upewnij się, że logo i nasze linki znajdują się na środku pionie.
-Nie używaj float, tylko stosuj techniki flex.
-
-# Rozszerzenie: Flex i Grid w CSS
-
-## Grid - wprowadzenie
-
-Czym w ogóle jest grid? Czy to tylko zagadnienie CSS'owe, czy stoi za tym coś więcej? Grid istniał w webdesignie na wiele lat przed wprowadzeniem tej funkcji w CSS.
-Samo pojęcie grida sprowadza się do podzielenia projektu strony/aplikacji na kolumny i wiersze. Zwykle jest to 12 kolumn, rzadziej 8, 6.
-
-![](./images/grid.png)
-
-Po co się to robi? Ma to związek z zagadnieniem RWD (Responsive Web Design), o którym powiemy na następnych lekcjach. W dużym skrócie - łatwiej stworzyć responsywną, elastyczną stronę trzymając się proporcji zamiast stałych wartości.
-Na przykład jakiś element ma zająć 4 z 12 dostępnych kolumn na szerokość - czyli jedną trzecią. Podając to w pixelach bylibyśmy ograniczeni do konkretnych wyświetlaczy, a programista mógłby się nie domyślić tego co w planach miał designer.
-
-## Podstawowe parametry Gridowe
-
-Analogicznie do zastosowania flex'a, oczywiście w tym przypadku też musimy zacząć od ustawienia odpowiedniej wartości parametrowi display.
-
-```css
-.box-container {
-  display: grid;
-}
-```
-
-W naszym przykładzie spróbujemy zrobić prostą siatkę `9x9`.
-Będziemy chcieli wyświtlić 9 identycznych, niebieskich, kwadratowych boxów - po 3 w jednym rzędzie. Taki schemat moglibysmy wykorzystać na przykład w grze kółko-krzyżyk albo memory.
-
-Aby dało się je od siebie rozróżnić, ustawimy między nimi przestrzeń - tzw. _gap_ o rozmiarze 1%.
-
-```html
-<div class="box-container">
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-</div>
-```
-
-```css
-.box-container {
-  display: grid;
-  width: 500px;
-  height: 500px;
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 33% 33% 33%;
-  grid-gap: 1%;
-}
-
-.box {
-  background: blue;
-}
-```
-
-Przeanalizujmy podany kod.
-
-```css
-.box-container {
-  grid-template-columns: 33% 33% 33%;
-  grid-template-rows: 33% 33% 33%;
-  grid-gap: 1%;
-}
-```
-
-Te parametry sprawiają, że:
-
-ustalamy szerokości kolumn - 3 kolumny po 33%, bo chcemy żeby każdy zajął 1/3 szerokości całego kontenera, który w naszym przykładzie ma 500x500 pixeli;
-ustalamy wysokość wierszy - 3 wiersze po 33%, bo chcemy żeby każdy zajął 1/3 wysokości całego kontenera
-ustalamy przerwę między tymi elementami - aby poszczególne "kafelki" były od siebie rozróżnialne, a nie zlały się w całość
-Inaczej niż zazwyczaj, tutaj ta przestrzeń pomiędzy elementami dzieje się automatycznie. Chociaż mamy wykorzystane 99% na same kafelki (3 x 33%) to zmieściliśmy 2%.
-
-Może chcielibyśmy stworzyć sekcje z bocznymi menu dla każdej z nich?
-
-```css
-.box-container {
-  grid-template-columns: 20% auto 20%;
-  grid-template-rows: auto;
-  grid-gap: 1%;
-}
-```
-
-W tym przypadku mówimy CSS'owi, że pierwsza i ostatnia kolumna mają mieć po 20%, a środkowa ma wykorzystać automatycznie pozostałe miejsce. Tym razem uznaliśmy też, że nasza sekcja może mieć sporo treści i ustalanie jej wysokości na sztywno to zły pomysł, dlatego w grid-template-rows podaliśmy wartość auto. To znaczy, że wiersze dostosują swoją wysokość automatycznie, uwzględniając ich zawartość.
-
-Efekt?
-
-![](./images/grid-2.png)
-
-Przejdźmy jednak do największego "bajeru". Czyli definiowania tego grida w sposób bardzo intuicyjny i obrazowy - ale też przydatny do bardziej życiowych sytuacji.
-Powiedzmy, że nasza strona ma mieć następującą "siatkę" - czyli grid layout. Zdecydowaliśmy, że kolumn będzie 6:
-
-Nawigacja ma mieć 100% szerokości
-Poniżej ma się znaleźć boczne menu na 2/6 szerokości
-Reszta tego wiersza to artykuły
-Poniżej chcemy wyświtlić 2 reklamy naszych produktów, oba po 50% szerokości
-Na samym dole mamy stopkę na 100% szerokości strony
-
-Oto jak to zapiszemy:
-
-```html
-<div class="container">
-  <div class="nav">nav</div>
-  <div class="side-nav">side-nav</div>
-  <div class="content">content</div>
-  <div class="ad1">ad1</div>
-  <div class="ad2">ad2</div>
-  <div class="footer">footer</div>
-</div>
-```
-
-```css
-.nav {
-  grid-area: nav;
-}
-.side-nav {
-  grid-area: side-nav;
-}
-.content {
-  grid-area: content;
-}
-.ad1 {
-  grid-area: ad1;
-}
-.ad2 {
-  grid-area: ad2;
-}
-.footer {
-  grid-area: footer;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  grid-template-areas:
-    'nav nav nav nav nav nav'
-    'side-nav side-nav content content content content'
-    'ad1 ad1 ad1 ad2 ad2 ad2'
-    'footer footer footer footer footer footer';
-  text-align: center;
-  grid-gap: 10px;
-}
-
-.container div {
-  background: blue;
-  padding: 10px;
-}
-```
-
-Efekt?
-
-![](./images/grid-3.png)
-
-Ok, ale co tu się dzieje?
-
-Przede wszystkim, na początku zrobiliśmy sobie `container` w naszym pliku HTML.
-Wrzuciliśmy do niego divy odpowiadające sekcjom, które chcielibyśmy wyświetlić.
-W CSS zdefiniowaliśmy klasy tych elementów, jedyne co w nich dodajemy do parametr `grid-area`, którego zadaniem jest przypisanie nazwy tej części naszego grida.
-Opisaliśmy klasę `containera`. Ustawiamy oczywiście `display` na `grid` i pozwalamy kolumnom oraz wierszom dostosowywać swój rozmiar odpowiednio do zawartości - `auto`.
-Tutaj zaczynają się czary :) W `grid-template-areas` możemy użyć zdefiniowanych przez nasz wcześniej grid-area. Wpisujemy je w jednym wierszu tyle razy ile chcemy żeby proporcjonalnie zajęły miejsca. Musimy pamiętać, że każdy wiersz musi mieć tyle samo kolumn! Czyli jeżeli nav ma zająć całą szerokość, a mamy 6 kolumn, to trzeba go wpisać 6 razy.
-Sprawiliśmy dla czytelności, że tekst się wyśrodkowuje.
-Dodaliśmy wszystkim div'om wewnątrz containera niebieskie tło oraz `padding` - w celach estetycznych i żeby się łatwiej wyróżniały dla przykładu.
-
-## Podsumowanie
-
-_Flex i Grid_ to potężne narzędzia, które dają nam olbrzymie możliwości i przyspieszają zdecydowanie pracę nad stronami i aplikacjami.
-
-Pamiętajcie jednak o najważniejszej zasadzie - nim przejdziecie dalej, spróbujcie napisać swoje małe strony przy ich użyciu. Nie kopiując i wklejając wartości, tylko robiąc to samemu :)
-
-Podobnie jak na końcu poprzedniego wpisu, gorąco zachęcamy do "wgryzienia" się bardziej w temat przy pomocy tutoriala grupy CSS-Tricks, którzy przedstawiają wszystkie dostępne parametry gridu oraz wizualizują ich zachowanie.
-
-[](https://css-tricks.com/snippets/css/complete-guide-grid/)
-
-## Zadanie domowe - zrób, nim przejdziesz dalej!
-
-Warto byłoby przećwiczyć tego Grida i zrozumieć na własnej skórze jak działa, dlatego Twoimi zadaniami będzie:
-
-Zrób siatkę, która będzie składać się z 4 wierszy po 6 kolumn (4x6)
-Niech każdy element ma szare tło oraz jest oddzielony od pozostałych o 15px.
-
-Stwórz grid, w którym:
-obszar (area) header zajmie całą szerokość i 1/3 wysokości,
-obszar sidebar zajmie 50% szerokości i pozostałe 2/3 wysokości, po lewej stronie,
-po prawej stronie obszar main oraz footer zajmą pozostałe 50% szerokości i oba po 1/3 wysokości, jeden pod drugim.
-Tekstowa interpretacja zadania drugiego:
-
-```text
-"header  header"
-"sidebar main  "
-"sidebar footer";
-```
