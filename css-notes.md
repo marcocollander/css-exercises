@@ -55,8 +55,8 @@ h2 {
 
 ### Deklaracje oraz słowa kluczowe
 
-Deklaracja składa się nazwy właściwości dwukropka, *wartości* i jest zakończona średnikiem. Po dwukropku oraz średniku
-może znajdować się zero albo dowolna liczba spacji. *Wartość* jest albo pojedyńczym słowem kluczowym, albo oddzieloną
+Deklaracja składa się nazwy właściwości dwukropka, _wartości_ i jest zakończona średnikiem. Po dwukropku oraz średniku
+może znajdować się zero albo dowolna liczba spacji. _Wartość_ jest albo pojedyńczym słowem kluczowym, albo oddzieloną
 spacjami listą kilku słów kluczowych dozwolonych dla tej właściwości. Jeśli w deklaracji zostanie użyta niepoprawna
 właściwość bądź jej wartość, cała deklaracja jest ignorowana.
 
@@ -78,15 +78,15 @@ słowa kluczowe ustawiające wielkość tekstu oraz wysokość wiersza.
 Od jakiegoś czasu ukośnik zaczął się pojawiać w wartościach innych właściwości. Są to między innymi
 (ta lista może ulec zmianie):
 
-* background
-* border-image
-* border-radius
-* grid
-* grid-area
-* grid-column
-* grid-row
-* grid-template
-* mask-border
+- background
+- border-image
+- border-radius
+- grid
+- grid-area
+- grid-column
+- grid-row
+- grid-template
+- mask-border
 
 Przy deklarowaniu wielu wartości — na przykład parametrów kilku obrazów w tle, przejść oraz cieni — deklaracje są
 rozdzielone właśnie przecinkami. Ponadto przecinki są stosowane do rozdzielania parametrów funkcji, takich jak gradienty
@@ -95,7 +95,7 @@ liniowe i przekształcenia. Oto przykład:
 ```css
 .box {
   box-shadow: inset -1px -1px white, 3px 3px 3px rgba(0, 0, 0, 0.2);
-  background-image: url(myimage.png), linear-gradient(180deg, #FFF 0%, #000 100%);
+  background-image: url(myimage.png), linear-gradient(180deg, #fff 0%, #000 100%);
   transform: translate(100px, 200px);
 }
 
@@ -112,15 +112,16 @@ Możemy grupować dowolną liczbę selektorów, rozdzielając je przecinkami. Po
 selektory przypisano styl:
 
 ```css
-h2, p {
+h2,
+p {
   color: grey;
 }
 ```
 
 #### Selektor uniwersalny
 
-*Selector uniwersalny*, którego symbolem jest zak gwiazdki (*) pasuje do każdego elementu, na zasadzie podobnej do
-działania symboli wieloznacznych (ang. *wildcard*).
+_Selector uniwersalny_, którego symbolem jest zak gwiazdki (*) pasuje do każdego elementu, na zasadzie podobnej do
+działania symboli wieloznacznych (ang. *wildcard\*).
 
 ```css
 * {
@@ -136,13 +137,13 @@ specyficzność 0-0-0.
 
 W jednej regule grupujemy deklaracje:
 
- ```css
-  h1 {
+```css
+h1 {
   font: 18px Helvetica;
   color: purple;
   background: aqua;
 }
- ```
+```
 
 Najlepiej jest zawsze stawiać średnik za ostatnią deklaracją, bez względu na miejsce użycia reguły.
 
@@ -151,7 +152,12 @@ Najlepiej jest zawsze stawiać średnik za ostatnią deklaracją, bez względu n
 Jeśli chcemy, aby każdy nagłówek otrzymał ten sam zestaw stylów to, piszemy:
 
 ```css
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: gray;
   background: white;
   padding: 0.5em;
@@ -179,8 +185,8 @@ document.createElement('main');
 
 Oprócz selektorów elementów dokumentu istnieją jeszcze dwa inne ich rodzaje:
 
-1. Selektory klas (ang. *class selectors*)
-2. Selektory identyfikatorów (ang. *ID selectors*)
+1. Selektory klas (ang. _class selectors_)
+2. Selektory identyfikatorów (ang. _ID selectors_)
 
 Pozwalają one na przypisanie stylów w sposób <u>niezależny od elementów dokumentu</u> i mogą zostać użyte samodzielnie
 lub w połączeniu z selektorami elementów. Nazwą jednej klasy możemy oznaczyć różne elementy i nadać im jednolity styl.
@@ -195,7 +201,7 @@ Selektor klas składa się z kropki i wartości atrybutu `class` elementu, do kt
 }
 ```
 
-Selektor uniwersalny (jawnie zapisywany w postaci gwiazdki — *) jest stosowany domyślnie, kiedy jakiś identyfikator,
+Selektor uniwersalny (jawnie zapisywany w postaci gwiazdki — \*) jest stosowany domyślnie, kiedy jakiś identyfikator,
 klasę, selektor atrybutu, selektor pseudoklasy lub pseudoelementu zapisze się bez powiązania z selektorem elementu.
 
 Gdy chcemy, aby tekst był czerwony tylko wtedy, gdy cały akapit jest ostrzeżeniem to, napiszemy:
@@ -326,11 +332,12 @@ a[class][title] {
 Można zawęzić proces wyboru do tych elementów, których atrybuty mają pewną konkretną wartość.
 
 ```css
-a[href="http://www.w3.org/"][title="W3C Home"] {
+a[href="http://www.w3.org/"][title="W3C Home"]
+{
   font-size: 200%;
 }
 
-p[class="urgent warning"] {
+p[class='urgent warning'] {
   font-weight: bold;
 }
 ```
@@ -346,14 +353,14 @@ pomiędzy `h1#page-title` oraz `h1[id="page-title"]` polega na innej specyficzno
 
 Tabela. Selektory atrybutów dopasowujące fragmenty łańcuchów znaków
 
-|Typ | Opis|
-|-----| -----|
-|[foo~="bar"]| Każdy element z atrybutem foo, którego wartość zawiera słowo bar na liście oddzielonych spacjami słów.
-| [foo*="bar"]| Każdy element z atrybutem foo, którego wartość zawiera łańcuch znaków bar.
-| [foo^="bar"] | Każdy element z atrybutem foo, którego wartość zaczyna się od bar.
-| [foo$="bar"] | Każdy element z atrybutem foo, którego wartość kończy się na bar.
+| Typ          | Opis                                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------ |
+| [foo~="bar"] | Każdy element z atrybutem foo, którego wartość zawiera słowo bar na liście oddzielonych spacjami słów. |
+| [foo*="bar"] | Każdy element z atrybutem foo, którego wartość zawiera łańcuch znaków bar.                             |
+| [foo^="bar"] | Każdy element z atrybutem foo, którego wartość zaczyna się od bar.                                     |
+| [foo$="bar"] | Każdy element z atrybutem foo, którego wartość kończy się na bar.                                      |
 
-`[foo|="bar"]`  Każdy element z atrybutem foo, którego wartość zaczyna się od łańcucha bar, po którym następuje znak
+`[foo|="bar"]` Każdy element z atrybutem foo, którego wartość zaczyna się od łańcucha bar, po którym następuje znak
 kreski (U+002D) lub którego wartość jest dokładnie równa bar
 
 #### Dopasowywanie początku lub całego atrybutu
@@ -361,7 +368,7 @@ kreski (U+002D) lub którego wartość jest dokładnie równa bar
 Rozważmy następującą regułę:
 
 ```css
-*[lang|="en"] {
+*[lang|='en'] {
   color: white;
 }
 ```
@@ -380,7 +387,7 @@ trzy elementy następującego przykładu zostaną wybrane, natomiast dwa ostatni
 Ogólnie rzecz biorąc, forma `[att|="val"]` może być wykorzystywana z dowolnym atrybutem oraz dowolnymi wartościami.
 
 ```css
-img[src|="rysunek"] {
+img[src|='rysunek'] {
   border: 1px solid gray;
 }
 ```
@@ -413,42 +420,48 @@ zostać przypisany danemu elementowi.
 Rozważmy poniższy, bardzo prosty dokument HTML:
 
 ```html
-
 <html lang="">
+  <head>
+    <base href="https://www.meerkat.web/" />
+    <title>Centrum mangust</title>
+  </head>
 
-<head>
-  <base href="https://www.meerkat.web/">
-  <title>Centrum mangust</title>
-</head>
-
-<body>
-<h1>Centrum <em>Mangust</em></h1>
-<p>
-  Witamy w Centrum <em>Mangust</em>, <strong> najlepszej stronie o mangustach
-  <a href="inet.html">w <em>całym</em> Internecie</a></strong>!
-</p>
-<ul>
-  <li>Oferujemy:
+  <body>
+    <h1>Centrum <em>Mangust</em></h1>
+    <p>
+      Witamy w Centrum <em>Mangust</em>,
+      <strong>
+        najlepszej stronie o mangustach
+        <a href="inet.html">w <em>całym</em> Internecie</a></strong
+      >!
+    </p>
     <ul>
-      <li><strong>Szczegółowe informacje</strong> o tym, jak zaadoptować mangustę</li>
-      <li>Wskazówki, jak żyć z mangustą</li>
-      <li><em>Zabawy</em> z mangustami, w tym:
+      <li>
+        Oferujemy:
+        <ul>
+          <li>
+            <strong>Szczegółowe informacje</strong> o tym, jak zaadoptować
+            mangustę
+          </li>
+          <li>Wskazówki, jak żyć z mangustą</li>
+          <li>
+            <em>Zabawy</em> z mangustami, w tym:
 
-        <ol>
-          <li>Bawienie się w aportowanie</li>
-          <li>Kopanie w poszukiwaniu jedzenia</li>
-          <li>Bawienie się w chowanego</li>
-        </ol>
-
+            <ol>
+              <li>Bawienie się w aportowanie</li>
+              <li>Kopanie w poszukiwaniu jedzenia</li>
+              <li>Bawienie się w chowanego</li>
+            </ol>
+          </li>
+        </ul>
       </li>
+      <li>... i wiele więcej!</li>
     </ul>
-  </li>
-  <li>... i wiele więcej!</li>
-</ul>
-<p>
-  Masz pytania? <a href="mailto:suricate@meerkat.web">Skontaktuj się z nami!</a>
-</p>
-</body>
+    <p>
+      Masz pytania?
+      <a href="mailto:suricate@meerkat.web">Skontaktuj się z nami!</a>
+    </p>
+  </body>
 </html>
 ```
 
@@ -478,7 +491,7 @@ Na rysunku widać również element `a` będący dzieckiem elementu `strong`, al
 również elementów `body` oraz `html`. Element `body` jest przodkiem wszystkich elementów, które domyślnie wyświetli
 przeglądarka, natomiast element `html` jest przodkiem wszystkich elementów dokumentu. Z tego powodu w dokumentach HTML
 lub XHTML element
-`html` jest czasami nazywany elementem głównym (ang. *root element*).
+`html` jest czasami nazywany elementem głównym (ang. _root element_).
 
 ### Selektory kontekstowe
 
@@ -491,7 +504,7 @@ h1 em {
 ```
 
 W selektorze kontekstowym lewa strona reguły składa się z dwóch lub większej liczby selektorów elementów rozdzielonych
-spacjami. Spacja jet tu przykładem kombinatora (ang. *combinator*), który może być interpretowany jako: „znaleziony
+spacjami. Spacja jet tu przykładem kombinatora (ang. _combinator_), który może być interpretowany jako: „znaleziony
 wewnątrz” lub „będący potomkiem”. W ten sposób `h1 em`można przetłumaczyć jako „każdy element `em` będący potomkiem
 elementu `h1`”.
 
@@ -533,13 +546,15 @@ wyświetlony na czerwono:
 
 ```html
 <h1>To jest <strong>bardzo</strong> ważne.</h1>
-<h1>To jest <em>naprawdę <strong>bardzo</strong></em> ważne.</h1>
+<h1>
+  To jest <em>naprawdę <strong>bardzo</strong></em> ważne.
+</h1>
 ```
 
 ### Wybieranie przylegających elementów rodzeństwa
 
 Element znajdujący się bezpośrednio po innym elemencie wewnątrz tego samego rodzica wybieramy, korzystając z kombinatora
-— znaku plusa (+) (ang. *adjacent sibling combinator*).
+— znaku plusa (+) (ang. _adjacent sibling combinator_).
 
 ```css
 h1 + p {
@@ -562,7 +577,6 @@ Tekst znajdujący się pomiędzy dwoma elementami nie przeszkadza w działaniu s
 elementów rodzeństwa.
 
 ```html
-
 <div>
   <ol>
     <li>Element listy 1</li>
@@ -608,11 +622,12 @@ h2 ~ ol {
 ```
 
 ```html
-
 <div>
   <h2>Subheadings</h2>
-  <p>It is the case that not every heading can be a main heading. Some headings
-    must be subheadings. Examples include:</p>
+  <p>
+    It is the case that not every heading can be a main heading. Some headings
+    must be subheadings. Examples include:
+  </p>
   <ol>
     <li>Headings that are less important</li>
     <li>Headings that are subsidiary to more important headlines</li>
@@ -676,6 +691,7 @@ pojawić w dowolnym miejscu w obrębie selektora oraz zawsze odwołują się one
 żadnego innego.
 
 Eric A. Meyer:
+
 > Otóż kiedy, w 2003 roku urodziło się moje pierwsze dziecko, ogłosiłem tę wieść w internecie (jak każdy…). Kilka
 > osób złożyło mi gratulacje i odpowiedziało żarcikami związanymi z CSS, których najlepszym przykładem był selektor
 > `#ericmeyer:first-child`. Problem polega na tym, że taki selektor wybrałby mnie, a nie moją córkę,
@@ -734,7 +750,6 @@ Pseudoklasa `:first-child` służy do wybierania elementów, które są pierwszy
 następujący kod:
 
 ```html
-
 <style>
   p:first-child {
     font-weight: bold;
@@ -752,15 +767,13 @@ następujący kod:
     <li>Turn key <strong>clockwise</strong></li>
     <li>Push accelerator</li>
   </ul>
-  <p>
-    Do <em>not</em> push the brake at the same time as the accelerator.
-  </p>
+  <p>Do <em>not</em> push the brake at the same time as the accelerator.</p>
 </div>
 ```
 
 Pierwsza reguła powoduje pogrubienie dowolnego elementu `p`, który jest pierwszym dzieckiem dowolnego elementu. Druga
 reguła powoduje zmianę na duże liter dowolnego elementu `li`, który jest pierwszym dzieckiem innego elementu (co w HTML
-oznacza element` `ol` albo `ul`).
+oznacza element` `ol`albo`ul`).
 
 ![Zmiana stylu pierwszego dziecka](images/first-child.png)
 
@@ -771,7 +784,6 @@ do elementu powiązanego z daną pseudoklasą.
 Jeśli chcielibyśmy dodać prawdziwe klasy do podanego kodu, wyglądałby on na przykład tak:
 
 ```html
-
 <div>
   <p class="first-child">These are the necessary steps:</p>
   <ul>
@@ -780,7 +792,8 @@ Jeśli chcielibyśmy dodać prawdziwe klasy do podanego kodu, wyglądałby on na
     <li>Push accelerator</li>
   </ul>
   <p>
-    Do <em class="first-child">not</em> push the brake at the same time as the accelerator.
+    Do <em class="first-child">not</em> push the brake at the same time as the
+    accelerator.
   </p>
 </div>
 ```
@@ -847,7 +860,8 @@ Jeśli jednak wkradnie nam się inny element między te wybrane w selektorze, np
 
 ```html
 <h1>text</h1>
-<span>text</span> <!-- nasz intruz -->
+<span>text</span>
+<!-- nasz intruz -->
 <p>text</p>
 ```
 
@@ -913,7 +927,7 @@ klasy.
 
 # Kaskada, specyficzność i dziedziczenie
 
-Kaskadowe arkusze stylów CSS (ang. *Cascading Style Sheets*) nie są językiem programowania, ale wymagają myślenia
+Kaskadowe arkusze stylów CSS (ang. _Cascading Style Sheets_) nie są językiem programowania, ale wymagają myślenia
 abstrakcyjnego i trochę kreatywności. Charakteryzują się prostą deklaratywną składnią, która jednakże może przy
 większych projektach osiągnąć utrudniającą pracę złożoność.
 
@@ -936,10 +950,12 @@ wywołujących konflikt.
 Zestawy reguł z deklaracjami wywołującymi konflikt mogą występować jeden po drugim albo mogą być rozrzucone w obrębie
 arkusza stylów. W każdym wariancie z punktu widzenia użytego kodu HTML wszystkie dotyczą tego samego elementu.
 
-***
+---
+
 **Kaskada** to zestaw reguł, którymi kieruje się przeglądarka przy rozwiązywaniu konfliktów deklaracji podczas nadawania
 stylu danemu elementowi. Ponadto stanowi fundamentalną część decydującą o działaniu arkuszy stylów CSS.
-***
+
+---
 
 Choć najbardziej doświadczeni projektanci mają ogólną orientację w kwestii kaskady, jej elementy są czasami źle
 rozumiane.
@@ -947,10 +963,10 @@ rozumiane.
 W momencie wystąpienia konfliktu między deklaracjami w celu określenia różnicy między nimi kaskada bierze pod uwagę
 następujące trzy kwestie:
 
-1. *Pochodzenie arkusza stylów.* Miejsce, z którego pochodzą style. Użyte style są stosowane w połączeniu ze stylami
+1. _Pochodzenie arkusza stylów._ Miejsce, z którego pochodzą style. Użyte style są stosowane w połączeniu ze stylami
    domyślnymi przeglądarki.
-2. *Specyficzność selektorów.* Określanie, jakie selektory mają pierwszeństwo względem innych.
-3. *Kolejność źródłowa.* Kolejność, w jakiej style są deklarowane w arkuszu stylów.
+2. _Specyficzność selektorów._ Określanie, jakie selektory mają pierwszeństwo względem innych.
+3. _Kolejność źródłowa._ Kolejność, w jakiej style są deklarowane w arkuszu stylów.
 
 ### Źródło arkusza stylów
 
@@ -961,7 +977,7 @@ Istnieją trzy źródła arkuszy stylów, które stosuje przeglądarka:
 
 1. Style autora - to style, które nadaje autor strony.
 2. Style użytkownika — to style, które definiuje użytkownik przeglądarki.
-3. Style agenta użytkownika (ang. *user agent stylesheet*)
+3. Style agenta użytkownika (ang. _user agent stylesheet_)
 
 #### Style agenta użytkownika
 
@@ -1020,9 +1036,9 @@ Podobnie specyficzność selektora klasy jest większa niż selektora znacznika 
 
 Dokładne reguły specyficzności są następujące:
 
-* Jeśli selektor ma więcej identyfikatorów, zwycięża, czyli jest bardziej specyficzny.
-* W razie remisu wygrywa selektor z największą liczbą klas.
-* W razie remisu wygrywa selektor z największą liczbą nazw znaczników.
+- Jeśli selektor ma więcej identyfikatorów, zwycięża, czyli jest bardziej specyficzny.
+- W razie remisu wygrywa selektor z największą liczbą klas.
+- W razie remisu wygrywa selektor z największą liczbą nazw znaczników.
 
 Selektory utworzone za pomocą identyfikatorów posiadają specyficzność, którą trudno przesłonić, chyba że za pomocą
 innych identyfikatorów.
@@ -1110,9 +1126,9 @@ Ten rozdział opisuje teoretyczne aspekty wizualizacji elementów w CSS.
 ## Podstawowe pojemniki
 
 CSS zakłada, że każdy element generuje jeden lub więcej prostokątnych obszarów zwanych pojemnikami albo pudełkami
-elementu (ang. *element box*).
+elementu (ang. _element box_).
 
-Wewnętrzna część każdego pojemnika elementu nazywana jest obszarem treści elementu (ang. *content area*). Obszar
+Wewnętrzna część każdego pojemnika elementu nazywana jest obszarem treści elementu (ang. _content area_). Obszar
 zawartości elementu opcjonalnie może być otoczony dopełnieniem, obramowaniem, konturami oraz marginesami. Ich szerokość
 może zostać ustawiona na zero, co w praktyce powoduje ich usunięcie z pojemnika elementu.
 
@@ -1127,48 +1143,46 @@ Jeśli nie zdefiniuje się koloru obramowania, przyjmowany jest kolor zawartośc
 
 ## Krótka powtórka
 
-> *Układ normalny*
+> _Układ normalny_
 >
->Pisany od lewej do prawej i od góry do dołu tekst w językach zachodnich oraz znany układ tekstu tradycyjnych dokumentów
-> HTML. Większość elementów znajduje się w układzie normalnym (ang. *normal flow*) i jedynym sposobem znalezienia się
+> Pisany od lewej do prawej i od góry do dołu tekst w językach zachodnich oraz znany układ tekstu tradycyjnych dokumentów
+> HTML. Większość elementów znajduje się w układzie normalnym (ang. _normal flow_) i jedynym sposobem znalezienia się
 > poza nim jest ustawienie elementu jako pływającego, pozycjonowanego bądź umieszczenie go w układzie typu flexbox lub
 > w układzie siatkowym.
 
-
-> *Element niezastępowany*
+> _Element niezastępowany_
 >
 > Element, którego zawartość znajduje się w dokumencie. Przykładowo, akapit `p` jest elementem niezastępowanym,
 > ponieważ jego treść (tekst) znajduje się wewnątrz samego elementu.
 
-
-> *Element zastępowany*
+> _Element zastępowany_
 >
 > Element, który spełnia funkcję pojemnika na coś innego. Np. element `img` tylko wskazuje na plik z obrazem.
 > Elementy zastępowane to również większość elementów formularza (na przykład `<input type="radio">`).
 
-> *Element główny*
+> _Element główny_
 >
 > Element znajdujący się na szczycie drzewa dokumentu. W dokumentach HTML jest nim element `html`.
 
-> *Pojemnik elementu blokowego*
+> _Pojemnik elementu blokowego_
 >
->Jest tworzony przez element taki jak akapit, nagłówek czy div. W układzie normalnym elementy te generują nowe wiersze
+> Jest tworzony przez element taki jak akapit, nagłówek czy div. W układzie normalnym elementy te generują nowe wiersze
 > zarówno przed swoimi pojemnikami, jak i po nich, dlatego układane są na sobie w pionie.
 > Dowolny element może stać się blokowym => `display: block'.
 
-> *Pojemnik elementu liniowego*
+> _Pojemnik elementu liniowego_
 >
 > Jest tworzony przez element taki jak strong czy span. Elementy te nie powodują „złamania wiersza” przed nimi bądź po
 > nich.
 > Dowolny element może stać się blokowym => `display: inline'.
 
-> *Pojemnik liniowo-blokowy*
+> _Pojemnik liniowo-blokowy_
 >
 > Jest to pojemnik, który wewnętrznie zachowuje się jak pojemnik blokowy, ale na zewnątrz jak pojemnik liniowy.
 > Jego działanie jest podobne (ale nieidentyczne) jak elementu zastępowanego. Wyobraź sobie element `div`, który został
 > umieszczony w wierszu tekstu tak, jakby był to obraz.
 
-### Blok zawierający element (ang. *containing block*).
+### Blok zawierający element (ang. _containing block_).
 
 Umiejscowienie każdego pojemnika elementu uzależnione jest od bloku zawierającego; w istocie blok zawierający stanowi
 „kontekst układu” dla pojemnika.
@@ -1261,6 +1275,7 @@ Wartość wyliczona: Jak określono.
 Dziedziczona: Nie
 
 Animowana: Nie
+
 <hr>
 
 Ta właściwość umożliwia zmianę sposobu działania wartości parametrów `width` i `height`.
@@ -1313,7 +1328,7 @@ rodzaju stanów.
 Każda zmiana wartości właściwości CSS zachodzi natychmiastowo. Na przykład zmiana koloru tła po wskazaniu danego
 elementu kursorem myszy jest bezzwłoczna, bez płynnego przejścia między barwami.
 
-Przejścia (ang. *transitions*) CSS umożliwiają sterowanie sposobem zmiany jednej wartości właściwości na inną w ciągu
+Przejścia (ang. _transitions_) CSS umożliwiają sterowanie sposobem zmiany jednej wartości właściwości na inną w ciągu
 określonego czasu. Dzięki temu możemy uzyskać płynną zmianę wartości.
 
 ```css
@@ -1343,22 +1358,37 @@ Dzięki przejściom rozwijane menu mogą się wyświetlać powoli. Jest to jedno
 
 Przejścia tworzy się za pomocą czterech właściwości przejść:
 
-* `transition-property`,
-* `transition-duration`,
-* `transition-timing-function`
-* `transition-delay`;
+- `transition-property`,
+- `transition-duration`,
+- `transition-timing-function`
+- `transition-delay`;
 
 Istnieje też skrótowa właściwość `transition` obejmująca te cztery właściwości składowe.
 
+# Notatki z książki CSS od podszewki
 
+# 2. Użycie jednostek względnych
 
+## 2.6. Właściwości niestandartowe (inaczej zmienne CSS)
 
+W celu zdefiniowania właściwości niestandardowej deklarujesz ją bardzo podobnie jak dowolną inną właściwość CSS.
 
+```css
+:root {
+  --primary-font: Arial, Helvetica, sans-serif;
+  --primary-color: #333;
+}
+```
 
+Nazwa musi się zaczynać od dwóch łączników `(--)`, aby odróżnić ją od nazw właściwości CSS. Po łącznikach następuje dowolna nazwa, jakiej chcesz użyć.
 
+Zmienne muszą być deklarowane wewnątrz bloku deklaracji
 
+Funkcja o nazwie `var()` umożliwia użycie zmiennych:
 
-
-
-
-
+```css
+p {
+  font-family: var(--primary-font);
+  color: var(--primary-color);
+}
+```
