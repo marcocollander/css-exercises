@@ -1,8 +1,48 @@
 # PODSTAWY CSS (Notatki z podręczników i kursów)
 
-# Wprowadzenie do CSS
+## Wprowadzenie do CSS
 
-# Selektory
+### Składnia wartości
+
+Będziemy się posługiwali opisem właściwości CSS oraz wartościami jakie one mogą przyjąć.
+
+Dozwolone wartości właściwości wymienione są zgodnie z następującą składnią:
+
+* **Wartość:**  <*family-name*>#
+* **Wartość:**  <*url*> || <*color*>
+* **Wartość:**  <*url*>?<*color*> [/<*color*>]?
+* **Wartość:**  [ <*length*> | thick | thin ]{1,4}
+
+Wyrażenia wypisane kursywą pomiędzy znakami `<>` określają typ wartości lub odniesienie do wartości innej właściwości.
+Słowa napisane czcionką o stałej szerokości są słowami kluczowymi.
+
+Składowe podane w definicji wartości można łączyć na kilka sposobów:
+
+* Kilka słów kluczowych występujących jedno za drugim i rozdzielonych tylko spacją oznacza, że wszystkie one muszą się pojawić w ustalonej    kolejności
+* Jeśli pionowa kreska `(X | Y)` oddziela alternatywy, musi wtedy pojawić się którakolwiek z nich, ale tylko jedna.
+* Podwójna pionowa kreska (X || Y) oznacza, że musi pojawić się albo wartość X, albo Y, albo obie równocześnie, ale mogą one wystąpić w dowolnej kolejności
+* Podwójny znak et (X && Y) oznacza, że muszą wystąpić wartości X oraz Y, ale w dowolnej kolejności.
+* Nawiasy kwadratowe ([...]) służą do grupowania.
+
+Po każdym słowie lub grupie ujętej w nawiasy może wystąpić jeden z następujących modyfikatorów:
+
+* Gwiazdka (*) — oznacza, że poprzedzająca ją wartość lub grupa ujęta w nawiasy jest powtarzana zero lub większą liczbę razy.
+* Plus (+) — oznacza, że poprzedzająca go wartość lub grupa ujęta w nawiasy jest powtórzona jeden lub więcej razy. 
+* Krzyżyk (#) — oznacza, że poprzedzająca go wartość albo grupa ujęta w nawiasy jest powtarzana jeden lub więcej razy, a kolejne powtórzenia mogą być rozdzielone przecinkami.
+* Znak zapytania (?) — oznacza, że poprzedzająca go wartość lub grupa w nawiasach jest opcjonalna.
+* Wykrzyknik (!) — oznacza, że poprzedzająca go wartość lub grupa w nawiasach jest wymagana i należy zastosować przynajmniej jedną z tych wartości, nawet jeśli składnia wydaje się wskazywać coś innego
+* Para liczb w nawiasach klamrowych ({M,N}) — oznacza, że poprzedzająca wartość lub grupa w nawiasach powtórzona jest przynajmniej M razy, a maksymalnie N razy.
+
+## Przykłady kodu
+
+[Przykłady kodu](https://meyerweb.github.io/csstdg4figs/).
+[Dodatkowe materiały](https://github.com/meyerweb/csstdg4figs).
+
+
+## 1. CSS i dokumenty
+<!-- TODO -->
+
+## 2. Selektory
 
 Łatwość przyporządkowania zbioru stylów wszystkim elementom tego samego typu jest jedną z podstawowych zalet CSS.
 Edytując jeden wiersz kodu CSS, można zmienić kolor wszystkich nagłówków.
@@ -925,7 +965,7 @@ Wybierze piąty paragraf, będący potomkiem div.
 Używany na porządku dziennym kiedy chcemy wyróżnić jakiś element strony bez potrzeby dodawania dla niego specjalnej
 klasy.
 
-# Kaskada, specyficzność i dziedziczenie
+## 3. Kaskada, specyficzność i dziedziczenie
 
 Kaskadowe arkusze stylów CSS (ang. _Cascading Style Sheets_) nie są językiem programowania, ale wymagają myślenia
 abstrakcyjnego i trochę kreatywności. Charakteryzują się prostą deklaratywną składnią, która jednakże może przy
@@ -1392,3 +1432,10 @@ p {
   color: var(--primary-color);
 }
 ```
+
+<!-- TODO -->
+
+## 4. Wartości oraz jednostki
+
+Do zadeklarowania właściwości w CSS oprócz nazwy musimy okreść jej wartość i jednostkę.
+
