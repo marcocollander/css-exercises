@@ -38,7 +38,6 @@ Po każdym słowie lub grupie ujętej w nawiasy może wystąpić jeden z następ
 [Przykłady kodu](https://meyerweb.github.io/csstdg4figs/).
 [Dodatkowe materiały](https://github.com/meyerweb/csstdg4figs).
 
-
 ## 1. CSS i dokumenty
 <!-- TODO -->
 
