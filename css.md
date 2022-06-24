@@ -46,27 +46,10 @@ Po każdym słowie lub grupie ujętej w nawiasy może wystąpić jeden z następ
 Łatwość przyporządkowania zbioru stylów wszystkim elementom tego samego typu jest jedną z podstawowych zalet CSS.
 Edytując jeden wiersz kodu CSS, można zmienić kolor wszystkich nagłówków.
 
-Pozwala to projektantowi strony skupić się na projektowaniu zamiast na bardziej przyziemnej pracy.
-
-Oczywiście, CSS nie rozwiąże wszystkich naszych problemów — <u>na przykład nie można go użyć do zmiany przestrzeni
-kolorów w rysunkach</u> — ale może uczynić wykonywanie globalnych zmian o wiele prostszym
-
 ## Podstawowe reguły tworzenia stylów
 
-Przed HTML5, aby wszystkie h2 były wyświetlane w szarym kolorze, należało dla każdego h2 napisać:
-
-```html
-<h2><font color="gray">To jest nagłówek</font></h2>
-```
-
-A w HTML5 tak:
-
-```html
-<h2 style="color: gray">To jest nagłówek</h2>
-```
-
-CSS pozwala na tworzenie reguł, które łatwo jest zmieniać, edytować i stosować do wszystkich elementów tekstowych, jakie
-się definiuje. Przykładowo, by wszystkie elementy h2 stały się szare, wystarczy zapisać poniższą regułę raz:
+Tworzone reguły łatwo jest zmieniać, edytować i stosować do wszystkich elementów tekstowych.
+Poniższa reguła nada wszystkim nagłówką h2 szary kolor:
 
 ```css
 h2 {
@@ -74,9 +57,17 @@ h2 {
 }
 ```
 
+Jeśli chcemy zmienić kolor szary nagłówków na inny łatwo to zrobimy:
+
+```css
+h2 {
+  color: silver;
+}
+```
+
 ### Selektory elementów
 
-Selektor elementu odnosi się do elementu HTML np. takich jak `p, h3, em, a` czy nawet sam `html`. Przykładowo:
+Selektor elementu odnosi się do elementu HTML:
 
 ```css
 html {
@@ -94,7 +85,7 @@ h2 {
 
 ### Deklaracje oraz słowa kluczowe
 
-Deklaracja składa się nazwy właściwości dwukropka, _wartości_ i jest zakończona średnikiem. Po dwukropku oraz średniku
+Deklaracja składa się nazwy właściwości dwukropka, *wartości* i jest zakończona średnikiem. Po dwukropku oraz średniku
 może znajdować się zero albo dowolna liczba spacji. _Wartość_ jest albo pojedyńczym słowem kluczowym, albo oddzieloną
 spacjami listą kilku słów kluczowych dozwolonych dla tej właściwości. Jeśli w deklaracji zostanie użyta niepoprawna
 właściwość bądź jej wartość, cała deklaracja jest ignorowana.
@@ -1437,4 +1428,5 @@ p {
 ## 4. Wartości oraz jednostki
 
 Do zadeklarowania właściwości w CSS oprócz nazwy musimy okreść jej wartość i jednostkę.
+
 
